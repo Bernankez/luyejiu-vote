@@ -12,6 +12,7 @@
     "fix": "eslint . --fix && stylelint **/*.{css,vue} --fix"
   },
   "dependencies": {
+    "@headlessui/vue": "^1.7.13",
     "vue": "^3.2.47"
   },
   "devDependencies": {

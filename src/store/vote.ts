@@ -7,6 +7,9 @@ export const useVoteStore = defineStore("vote", () => {
 
   return {
     votes,
+    $reset: () => {
+      votes.value = [];
+    },
   };
 }, {
   persist: true,

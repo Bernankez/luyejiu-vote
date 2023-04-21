@@ -8,7 +8,7 @@
       <Button class="m-l-2" @click="close">
         断开连接
       </Button>
-      <span class="m-l-2">{{ ConnectionStatus[connectionStatus] }}</span>
+      <span class="m-l-2">当前连接状态：{{ ConnectionStatus[connectionStatus] }}</span>
     </div>
     <div>
       <Button @click="onReset">

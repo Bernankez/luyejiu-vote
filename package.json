@@ -1,18 +1,24 @@
 {
   "name": "bilibili-simple-vote",
-  "private": true,
-  "version": "0.0.0",
   "type": "module",
+  "version": "0.0.0",
+  "private": true,
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "lint": "eslint . && stylelint **/*.{css,vue}",
+    "fix": "eslint . --fix && stylelint **/*.{css,vue} --fix"
   },
   "dependencies": {
     "vue": "^3.2.47"
   },
   "devDependencies": {
+    "@bernankez/eslint-config": "^0.4.2",
+    "@bernankez/stylelint-config": "^0.3.0",
     "@vitejs/plugin-vue": "^4.1.0",
+    "eslint": "^8.38.0",
+    "stylelint": "^15.5.0",
     "typescript": "^5.0.4",
     "vite": "^4.3.1",
     "vue-tsc": "^1.4.2"

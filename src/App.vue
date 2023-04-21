@@ -102,7 +102,7 @@ useHead({
 
 const { positive, positiveWord, negative, negativeWord } = storeToRefs(useAppStore());
 const { messages, clear } = useDanmaku({ autoConnect: false });
-const { voting, vote, votes, start } = useVote(messages);
+const { voting, vote, votes, start, stop, votePositive, voteNegative } = useVote(messages);
 
 function onStart() {
   // clear history messages before start
@@ -112,9 +112,9 @@ function onStart() {
 
 onStart();
 
-// function onStop() {
-//   stop();
-// }
+function onStop() {
+  stop();
+}
 
 function onRemove(id: string) {
   votes.value.splice(votes.value.findIndex(v => v.id === id), 1);

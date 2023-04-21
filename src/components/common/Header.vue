@@ -27,7 +27,7 @@ import { ConnectionStatus } from "@/types";
 import { useAppStore } from "@/store/app";
 import { useVoteStore } from "@/store/vote";
 
-const roomId = ref<number>();
+const roomId = ref<number>(2064239);
 
 const { roomId: globalRoomId } = storeToRefs(useAppStore());
 

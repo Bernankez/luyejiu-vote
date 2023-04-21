@@ -28,7 +28,7 @@
             {{ vote.positiveCount }}
           </div>
           <div class="flex flex-col justify-end h-40 bg-transparent">
-            <div class="w-full h-50% bg-light-blue-500"></div>
+            <div class="positive-percentage w-full bg-light-blue-500"></div>
           </div>
         </div>
         <div class="flex flex-col w-14">
@@ -36,7 +36,7 @@
             {{ vote.negativeCount }}
           </div>
           <div class="flex flex-col justify-end h-40 bg-transparent">
-            <div class="w-full h-100% bg-purple-500"></div>
+            <div class="negative-percentage w-full bg-purple-500"></div>
           </div>
         </div>
         <div class="flex items-center justify-center w-5 text-purple-500 font-bold text-5">
@@ -63,29 +63,32 @@
       </div>
     </div>
     <div class="relative flex flex-col flex-gap-5 h-full overflow-y-auto p-4 box-border rounded-4 b-3 b-t-0 b-orange-300 shadow-md shadow-orange-300 bg-orange-200">
-      <div class="text-7 font-bold text-orange-500">
-        历史结果
+      <div class="flex justify-between items-center text-7 font-bold text-orange-500">
+        <span>
+          历史结果
+        </span>
+        <Button @click="onClear">
+          清除历史
+        </Button>
       </div>
       <div class="flex flex-col flex-gap-2 w-60 max-h-80">
-        <VoteResult v-for="i in 40" :key="i" />
+        <VoteResult v-for="(v, index) in votes" :key="v.id" :negative="v.negative" :positive="v.positive" :index="index + 1" @remove="onRemove" />
       </div>
     </div>
-    <pre>
-      {{ messages.map(item => item.id) }}
-      {{ vote }}
-    </pre>
   </div>
 </template>
 
 <script setup lang="ts">
 import { useHead } from "@vueuse/head";
 import { storeToRefs } from "pinia";
+import { computed } from "vue";
 import Button from "./components/ui/Button.vue";
 import VoteResult from "./components/common/VoteResult.vue";
 import Header from "./components/common/Header.vue";
 import { useVote } from "./composables/vote";
 import { useAppStore } from "./store/app";
 import { useDanmaku } from "./composables/danmaku";
+import { getCountPercentage } from "./utils";
 
 useHead({
   title: "鹿野灸忏悔回投票机",
@@ -99,7 +102,7 @@ useHead({
 
 const { positive, positiveWord, negative, negativeWord } = storeToRefs(useAppStore());
 const { messages, clear } = useDanmaku({ autoConnect: false });
-const { voting, vote, start, stop, votePositive, voteNegative } = useVote(messages);
+const { voting, vote, votes, start, stop, votePositive, voteNegative } = useVote(messages);
 
 function onStart() {
   // clear history messages before start
@@ -110,4 +113,24 @@ function onStart() {
 function onStop() {
   stop();
 }
+
+function onRemove(id: string) {
+  votes.value.splice(votes.value.findIndex(v => v.id === id), 1);
+}
+
+function onClear() {
+  votes.value = [];
+}
+
+const percentage = computed(() => getCountPercentage(vote.value.positiveCount, vote.value.negativeCount));
 </script>
+
+<style scoped>
+.positive-percentage {
+  height: v-bind("`${percentage.positiveSinglePercentage * 100}%`");
+}
+
+.negative-percentage {
+  height: v-bind("`${percentage.negativeSinglePercentage * 100}%`");
+}
+</style>

@@ -6,16 +6,16 @@
     <div class="flex w-full items-center flex-gap-1">
       <div>👼🏻</div>
       <div class="w-full h-3 flex rounded-1 overflow-hidden">
-        <Tooltip wrapper-class="w-40% h-full" placement="top">
+        <Tooltip wrapper-class="positive-percentage h-full" placement="top">
           <div class="w-full h-full bg-light-blue-500"></div>
           <template #content>
-            40
+            {{ positive }}
           </template>
         </Tooltip>
-        <Tooltip wrapper-class="w-60% h-full" placement="top">
+        <Tooltip wrapper-class="negative-percentage h-full" placement="top">
           <div class="w-full h-full bg-purple-500"></div>
           <template #content>
-            60
+            {{ negative }}
           </template>
         </Tooltip>
       </div>
@@ -45,7 +45,9 @@
 <script setup lang="ts">
 import { Popover, PopoverButton, PopoverPanel } from "@headlessui/vue";
 import type { Fn } from "@vueuse/core";
+import { computed } from "vue";
 import Tooltip from "../ui/Tooltip.vue";
+import { getCountPercentage } from "@/utils";
 
 const props = withDefaults(defineProps<{
   id?: string;
@@ -71,9 +73,19 @@ const onConfirm = (close: Fn) => {
   emit("remove", props.id);
   close();
 };
+
+const percentage = computed(() => getCountPercentage(props.positive, props.negative));
 </script>
 
 <style scoped>
+:global(.positive-percentage) {
+  width: v-bind("`${percentage.positivePercentage * 100}%`");
+}
+
+:global(.negative-percentage) {
+  width: v-bind("`${percentage.negativePercentage * 100}%`");
+}
+
 .popover-enter-active,
 .popover-leave-active {
   transition: all 0.15s ease-out;

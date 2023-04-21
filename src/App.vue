@@ -71,7 +71,7 @@
           清除历史
         </Button>
       </div>
-      <div class="flex flex-col flex-gap-2 w-60 max-h-80">
+      <div class="flex flex-col flex-gap-2 w-60 h-80">
         <VoteResult v-for="(v, index) in votes" :key="v.id" :negative="v.negative" :positive="v.positive" :index="index + 1" @remove="onRemove" />
       </div>
     </div>

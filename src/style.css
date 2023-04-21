@@ -14,10 +14,12 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-size-adjust: 100%;
+
+  /* background-color: black; */
 }
 
 html.dark {
-  color-scheme: dark;
+  color-scheme: light dark;
 }
 
 html body {

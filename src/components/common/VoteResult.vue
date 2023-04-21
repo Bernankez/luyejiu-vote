@@ -46,22 +46,21 @@
 import { Popover, PopoverButton, PopoverPanel } from "@headlessui/vue";
 import type { Fn } from "@vueuse/core";
 import Tooltip from "../ui/Tooltip.vue";
-import type { Vote } from "@/types";
 
 const props = withDefaults(defineProps<{
   id?: string;
-  hail?: number;
-  jail?: number;
+  positive?: number;
+  negative?: number;
   index?: number;
 }>(), {
   id: "",
-  hail: 0,
-  jail: 0,
+  positive: 0,
+  negative: 0,
   index: 1,
 });
 
 const emit = defineEmits<{
-  (event: "remove", vote: Vote): void;
+  (event: "remove", id: string): void;
 }>();
 
 const onCancel = (close: Fn) => {
@@ -69,7 +68,7 @@ const onCancel = (close: Fn) => {
 };
 
 const onConfirm = (close: Fn) => {
-  emit("remove", { ...props });
+  emit("remove", props.id);
   close();
 };
 </script>

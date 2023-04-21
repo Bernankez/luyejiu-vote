@@ -15,12 +15,17 @@
     "@floating-ui/vue": "^0.2.1",
     "@headlessui/vue": "^1.7.13",
     "@vueuse/core": "^10.0.2",
+    "blive-message-listener": "^0.4.4",
+    "pinia": "^2.0.35",
+    "pinia-plugin-persistedstate": "^3.1.0",
+    "uuid": "^9.0.0",
     "vue": "^3.2.47"
   },
   "devDependencies": {
     "@bernankez/eslint-config": "^0.4.2",
     "@bernankez/stylelint-config": "^0.3.0",
     "@iconify/json": "^2.2.54",
+    "@types/uuid": "^9.0.1",
     "@unocss/reset": "^0.51.5",
     "@vitejs/plugin-vue": "^4.1.0",
     "@vueuse/head": "^1.1.26",

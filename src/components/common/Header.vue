@@ -19,7 +19,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
 import { storeToRefs } from "pinia";
 import Button from "../ui/Button.vue";
 import { useDanmaku } from "@/composables/danmaku";
@@ -31,10 +31,19 @@ const roomId = ref<number>(2064239);
 
 const { roomId: globalRoomId } = storeToRefs(useAppStore());
 
-function onConnect() {
-  globalRoomId.value = roomId.value ?? null;
+function onConnect(id?: number) {
+  globalRoomId.value = id ?? roomId.value ?? null;
   connect();
 }
+
+onMounted(() => {
+  const url = window.location.href;
+  const _roomId = (new URL(url)).searchParams.get("roomId");
+  if (_roomId) {
+    roomId.value = Number(_roomId);
+    onConnect();
+  }
+});
 
 const { connect, close, connectionStatus } = useDanmaku({
   autoConnect: false,

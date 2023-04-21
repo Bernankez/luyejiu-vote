@@ -43,7 +43,7 @@
           扣{{ negativeWord }}下{{ negative }}
         </div>
       </div>
-      <div class="m-t-3 flex flex-col flex-gap-3">
+      <!-- <div class="m-t-3 flex flex-col flex-gap-3">
         <div class="flex items-center justify-evenly">
           <Button class="text-light-blue-500! b-light-blue-500!" @click="votePositive">
             <span>投一票</span>
@@ -60,7 +60,7 @@
             停止
           </Button>
         </div>
-      </div>
+      </div> -->
     </div>
     <div class="relative flex flex-col flex-gap-5 h-full overflow-y-auto p-4 box-border rounded-4 b-3 b-t-0 b-orange-300 shadow-md shadow-orange-300 bg-orange-200">
       <div class="flex justify-between items-center text-7 font-bold text-orange-500">
@@ -109,6 +109,8 @@ function onStart() {
   clear();
   start();
 }
+
+onStart();
 
 function onStop() {
   stop();

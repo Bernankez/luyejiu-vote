@@ -27,8 +27,8 @@ export function _useVote(messages: Ref<Message<DanmuMsg>[]>) {
   const vote = computed(() => {
     return {
       ...cachedComputedVote.value,
-      positiveCount: cachedComputedVote.value?.positiveCount || 0 + appendPositive.value,
-      negativeCount: cachedComputedVote.value?.negativeCount || 0 + appendNegative.value,
+      positiveCount: (cachedComputedVote.value?.positiveCount || 0) + appendPositive.value,
+      negativeCount: (cachedComputedVote.value?.negativeCount || 0) + appendNegative.value,
     };
   });
   const voting = ref(false);

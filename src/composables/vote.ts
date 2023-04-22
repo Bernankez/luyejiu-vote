@@ -89,9 +89,9 @@ function countVotes(messages: Message<DanmuMsg>[]) {
   danmakuMessages.forEach((message) => {
     if (!userIds.includes(message.user.uid)) {
       userIds.push(message.user.uid);
-      if (message.content === positiveWord.value) {
+      if (new RegExp(`^${positiveWord.value}+$`).test(message.content.trim())) {
         positiveCount++;
-      } else if (message.content === negativeWord.value) {
+      } else if (new RegExp(`^${negativeWord.value}+$`).test(message.content.trim())) {
         negativeCount++;
       }
     }

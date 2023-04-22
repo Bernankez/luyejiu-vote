@@ -127,10 +127,14 @@ const percentage = computed(() => getCountPercentage(vote.value.positiveCount, v
 
 <style scoped>
 .positive-percentage {
+  @apply transition-all;
+
   height: v-bind("`${percentage.positiveSinglePercentage * 100}%`");
 }
 
 .negative-percentage {
+  @apply transition-all;
+
   height: v-bind("`${percentage.negativeSinglePercentage * 100}%`");
 }
 </style>

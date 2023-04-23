@@ -35,6 +35,8 @@
     "stylelint": "^15.5.0",
     "typescript": "^5.0.4",
     "unocss": "^0.51.5",
+    "unplugin-auto-import": "^0.15.3",
+    "unplugin-vue-components": "^0.24.1",
     "vite": "^4.3.1",
     "vite-ssg": "^0.22.2",
     "vue-tsc": "^1.4.2"

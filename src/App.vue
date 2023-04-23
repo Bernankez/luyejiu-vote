@@ -82,9 +82,6 @@
 import { useHead } from "@vueuse/head";
 import { storeToRefs } from "pinia";
 import { computed } from "vue";
-import Button from "./components/ui/Button.vue";
-import VoteResult from "./components/common/VoteResult.vue";
-import Header from "./components/common/Header.vue";
 import { useVote } from "./composables/vote";
 import { useAppStore } from "./store/app";
 import { useDanmaku } from "./composables/danmaku";

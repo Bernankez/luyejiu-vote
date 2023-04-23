@@ -3,7 +3,6 @@ import type { Ref } from "vue";
 import { computed, ref, watch, watchEffect } from "vue";
 import { storeToRefs } from "pinia";
 import type { Fn } from "@vueuse/core";
-import { createSharedComposable } from "@vueuse/core";
 import { v4 as uuid } from "uuid";
 import { useAppStore } from "@/store/app";
 import { useVoteStore } from "@/store/vote";
@@ -78,7 +77,7 @@ export function _useVote(messages: Ref<Message<DanmuMsg>[]>) {
     },
   };
 }
-export const useVote = createSharedComposable(_useVote);
+// export const useVote = createSharedComposable(_useVote);
 
 function countVotes(messages: Message<DanmuMsg>[]) {
   const { negativeWord, positiveWord } = storeToRefs(useAppStore());

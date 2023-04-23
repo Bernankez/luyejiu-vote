@@ -4,6 +4,7 @@ import vue from "@vitejs/plugin-vue";
 import UnoCSS from "unocss/vite";
 import AutoImport from "unplugin-auto-import/vite";
 import Components from "unplugin-vue-components/vite";
+import { NaiveUiResolver } from "unplugin-vue-components/resolvers";
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -18,6 +19,14 @@ export default defineConfig({
       imports: [
         "vue",
         "@vueuse/core",
+        {
+          "naive-ui": [
+            "useDialog",
+            "useMessage",
+            "useNotification",
+            "useLoadingBar",
+          ],
+        },
       ],
       dirs: [
         "src/composables",
@@ -27,6 +36,7 @@ export default defineConfig({
     Components({
       dirs: ["src/components"],
       deep: true,
+      resolvers: [NaiveUiResolver()],
     }),
   ],
   resolve: {

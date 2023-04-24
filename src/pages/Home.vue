@@ -1,9 +1,6 @@
 <template>
-  <Header />
-  <div>
-    <LButton>
-      tet
-    </LButton>
+  <div class="w-full min-h-full flex justify-center items-center">
+    <VotePanel />
   </div>
 </template>
 

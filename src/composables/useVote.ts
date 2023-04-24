@@ -1,7 +1,6 @@
 import { storeToRefs } from "pinia";
 import type { User } from "blive-message-listener";
 import { v4 as uuid } from "uuid";
-import { getVoteType } from "@/utils";
 
 export type VoteType = "up" | "down";
 
@@ -108,6 +107,8 @@ export function useVote() {
   }
 
   return {
+    voting,
+    tickets,
     totalUp,
     totalDown,
 

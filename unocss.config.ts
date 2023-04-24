@@ -1,5 +1,5 @@
 import { defineConfig, presetIcons, presetUno, transformerDirectives } from "unocss";
-import { gray, primary } from "./src/styles/color";
+import { deepOrange, gray, primary, red, yellow } from "./src/styles/color";
 
 export default defineConfig({
   presets: [presetUno(), presetIcons()],
@@ -8,6 +8,9 @@ export default defineConfig({
     colors: {
       primary,
       gray,
+      deepOrange,
+      yellow,
+      red,
     },
   },
 });

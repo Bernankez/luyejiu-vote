@@ -20,6 +20,8 @@ declare module '@vue/runtime-core' {
     NButton: typeof import('naive-ui')['NButton']
     NInput: typeof import('naive-ui')['NInput']
     Tooltip: typeof import('./src/components/ui/Tooltip.vue')['default']
+    VoteBar: typeof import('./src/components/common/VoteBar.vue')['default']
+    VotePanel: typeof import('./src/components/common/VotePanel.vue')['default']
     VoteResult: typeof import('./src/components/common/VoteResult.vue')['default']
   }
 }

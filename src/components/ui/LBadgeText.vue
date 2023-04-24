@@ -8,11 +8,11 @@
 </template>
 
 <script setup lang="ts">
-import { blue, green, orange, red } from "@/styles/color";
+import { blue, gray, green, orange, red } from "@/styles/color";
 
 const props = withDefaults(defineProps<{
   title?: string;
-  status?: "success" | "error" | "info" | "warning";
+  status?: "default" | "success" | "error" | "info" | "warning";
 }>(), {
   title: "",
   status: "info",
@@ -28,8 +28,9 @@ const color = computed(() => {
       return orange[500];
     case "error":
       return red[500];
+    case "default":
     default:
-      return blue[500];
+      return gray[400];
   }
 });
 </script>

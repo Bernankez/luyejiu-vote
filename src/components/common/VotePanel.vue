@@ -51,7 +51,7 @@
       </LButton>
       <LButton class="p-1!" :color="downColor" @click="onVoteDown" @longpress="onVoteDownLongPress">
         <template #icon>
-          <div class="i-ion:caret-down text-8"></div>
+          <div class="i-ion:caret-up text-8"></div>
         </template>
       </LButton>
     </div>

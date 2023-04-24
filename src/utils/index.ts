@@ -1,20 +1,34 @@
-export function getCountPercentage(positiveCount: number, negativeCount: number) {
-  const max = Math.max(positiveCount, negativeCount);
-  const min = Math.min(positiveCount, negativeCount);
+import { storeToRefs } from "pinia";
 
-  if (positiveCount === negativeCount && positiveCount === 0) {
+export function getCountPercentage(upCount: number, downCount: number) {
+  const max = Math.max(upCount, downCount);
+  const min = Math.min(upCount, downCount);
+
+  if (upCount === downCount && downCount === 0) {
     return {
-      positivePercentage: 1,
-      negativePercentage: 1,
-      positiveSinglePercentage: 0,
-      negativeSinglePercentage: 0,
+      upPercentage: 1,
+      downPercentage: 1,
+      upSinglePercentage: 0,
+      downSinglePercentage: 0,
     };
   }
 
   return {
-    positivePercentage: positiveCount / (positiveCount + negativeCount),
-    negativePercentage: negativeCount / (positiveCount + negativeCount),
-    positiveSinglePercentage: positiveCount === max ? 1 : min / max,
-    negativeSinglePercentage: negativeCount === max ? 1 : min / max,
+    upPercentage: upCount / (upCount + downCount),
+    downPercentage: downCount / (upCount + downCount),
+    upSinglePercentage: upCount === max ? 1 : min / max,
+    downSinglePercentage: downCount === max ? 1 : min / max,
   };
+}
+
+export function getVoteType(content: string) {
+  const { upTriggerWord, downTriggerWord } = storeToRefs(useAppStore());
+  const upRegExp = new RegExp(`^${upTriggerWord.value}+$`);
+  const downRegExp = new RegExp(`^${downTriggerWord.value}+$`);
+  if (upRegExp.test(content)) {
+    return "up";
+  } else if (downRegExp.test(content)) {
+    return "down";
+  }
+  return undefined;
 }

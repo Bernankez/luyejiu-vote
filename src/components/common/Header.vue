@@ -1,47 +1,53 @@
 <template>
-  <header class="fixed w-full p-x-3 flex items-center justify-between bg-gray-50 h-20">
-    <div class="flex items-center">
-      <input v-model="roomId" type="number" class="b-1 b-solid b-gray-400" placeholder="输入直播间号" />
-      <Button class="m-l-2" @click="onConnect">
+  <header class="fixed top-0 left-0 h-18 w-full flex items-center justify-between p-x-4 box-border bg-gray-50">
+    <div class="flex flex-gap-2 items-center">
+      <NInput v-model:value="roomId" :allow-input="numberValidate" placeholder="宝这里填房间号" />
+      <LButton v-if="connectionStatus === 'disconnected' || connectionStatus === 'error'" @click="connect">
         连接
-      </Button>
-      <Button class="m-l-2" @click="close">
-        断开连接
-      </Button>
-      <span class="m-l-2">当前连接状态：{{ ConnectionStatus[connectionStatus] }}</span>
+      </LButton>
+      <LButton v-else @click="close">
+        断开
+      </LButton>
+      <LBadgeText :status="badgeStatus">
+        {{ ConnectionStatus[connectionStatus] }}
+      </LBadgeText>
     </div>
     <div>
-      <Button @click="onReset">
-        清除全部缓存
-      </Button>
+      <LButton @click="onSetting">
+        <template #icon>
+          <div class="i-uil:setting text-6"></div>
+        </template>
+      </LButton>
+      <SettingDialog v-model:show="showSettingDialog" />
     </div>
   </header>
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
 import { storeToRefs } from "pinia";
-import Button from "../ui/Button.vue";
-import { useDanmaku } from "@/composables/danmaku";
-import { ConnectionStatus } from "@/types";
-import { useAppStore } from "@/store/app";
-import { useVoteStore } from "@/store/vote";
 
-const roomId = ref<number>(2064239);
+const { defaultRoomId } = storeToRefs(useAppStore());
+const { connect, close, connectionStatus, roomId } = useDanmu();
+roomId.value = defaultRoomId.value.toString();
+const numberValidate = (value: string) => !value || /^\d+$/.test(value);
 
-const { roomId: globalRoomId } = storeToRefs(useAppStore());
-
-function onConnect() {
-  globalRoomId.value = roomId.value ?? null;
-  connect();
-}
-
-const { connect, close, connectionStatus } = useDanmaku({
-  autoConnect: false,
+const badgeStatus = computed(() => {
+  switch (connectionStatus.value) {
+    case "loading":
+      return "info";
+    case "connected":
+      return "success";
+    case "disconnected":
+      return "default";
+    case "error":
+      return "error";
+    default:
+      return "default";
+  }
 });
 
-const onReset = () => {
-  useAppStore().$reset();
-  useVoteStore().$reset();
+const showSettingDialog = ref(false);
+const onSetting = () => {
+  showSettingDialog.value = true;
 };
 </script>

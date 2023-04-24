@@ -1,14 +1,14 @@
 import { defineStore } from "pinia";
 import { ref } from "vue";
-import type { Vote } from "@/types";
+import type { Vote } from "@/composables/useVote";
 
 export const useVoteStore = defineStore("vote", () => {
-  const votes = ref<Vote[]>([]);
+  const voteHistory = ref<Vote[]>([]);
 
   return {
-    votes,
+    voteHistory,
     $reset: () => {
-      votes.value = [];
+      voteHistory.value = [];
     },
   };
 }, {

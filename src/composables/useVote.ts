@@ -34,6 +34,15 @@ export function useVote() {
   const totalUp = computed(() => appendUp.value + ticketsUp.value);
   const totalDown = computed(() => appendDown.value + ticketsDown.value);
 
+  const message = useMessage();
+
+  watchEffect(() => {
+    if (voting.value && connectionStatus.value !== "connected") {
+      stop();
+      message.warning("直播间连接状态变化，投票停止");
+    }
+  });
+
   function voteUp() {
     voting.value && appendUp.value++;
   }

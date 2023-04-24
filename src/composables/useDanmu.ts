@@ -1,7 +1,6 @@
 import { toValue } from "@vueuse/core";
 import type { DanmuMsg, Message, MessageListener, MsgHandler } from "blive-message-listener";
-import { startListen } from "blive-message-listener";
-import { storeToRefs } from "pinia";
+import { startListen } from "blive-message-listener/browser";
 
 export type Connection = "loading" | "connected" | "disconnected" | "error";
 
@@ -13,7 +12,8 @@ export const ConnectionStatus: Record<Connection, string> = {
 };
 
 function _useDanmu() {
-  const { roomId } = storeToRefs(useAppStore());
+  const roomId = ref("");
+  const lastRoomId = ref("");
 
   const connectionStatus = ref<Connection>("disconnected");
   const instance = ref<MessageListener>();
@@ -38,11 +38,13 @@ function _useDanmu() {
   };
 
   function connect() {
-    close();
-    connectionStatus.value = "loading";
     const id = toValue(roomId);
-    if (isDefined(id)) {
-      instance.value = startListen(id, handler);
+    const _id = Number(id);
+    if (!Number.isNaN(_id)) {
+      close();
+      connectionStatus.value = "loading";
+      instance.value = startListen(_id, handler);
+      lastRoomId.value = id;
     }
   }
 
@@ -54,6 +56,7 @@ function _useDanmu() {
   tryOnScopeDispose(close);
 
   return {
+    roomId,
     instance,
     connectionStatus,
     connect,

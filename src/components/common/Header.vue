@@ -1,11 +1,11 @@
 <template>
-  <header class="fixed top-0 left-0 h-18 w-full flex items-center p-x-4 box-border bg-gray-50">
+  <header class="fixed top-0 left-0 h-18 w-full flex items-center justify-between p-x-4 box-border bg-gray-50">
     <div class="flex flex-gap-2 items-center">
-      <NInput :allow-input="numberValidate" :value="roomId.toString()" placeholder="请输入房间号" @update:value="value => roomId = Number(value)" />
-      <LButton v-if="connectionStatus === 'disconnected' || connectionStatus === 'error'">
+      <NInput v-model:value="roomId" :allow-input="numberValidate" placeholder="宝这里填房间号" />
+      <LButton v-if="connectionStatus === 'disconnected' || connectionStatus === 'error'" @click="connect">
         连接
       </LButton>
-      <LButton v-else>
+      <LButton v-else @click="close">
         断开
       </LButton>
       <LBadgeText :status="badgeStatus">
@@ -13,7 +13,11 @@
       </LBadgeText>
     </div>
     <div>
-      <LButton>设置</LButton>
+      <LButton @click="onSetting">
+        <template #icon>
+          <div class="i-uil:setting text-6"></div>
+        </template>
+      </LButton>
     </div>
   </header>
 </template>
@@ -21,10 +25,11 @@
 <script setup lang="ts">
 import { storeToRefs } from "pinia";
 
-const { roomId } = storeToRefs(useAppStore());
+const { defaultRoomId } = storeToRefs(useAppStore());
+const { connect, close, connectionStatus, roomId } = useDanmu();
+roomId.value = defaultRoomId.value.toString();
 const numberValidate = (value: string) => !value || /^\d+$/.test(value);
 
-const { connect, close, connectionStatus } = useDanmu();
 const badgeStatus = computed(() => {
   switch (connectionStatus.value) {
     case "loading":
@@ -39,4 +44,8 @@ const badgeStatus = computed(() => {
       return "default";
   }
 });
+
+const onSetting = () => {
+  // TODO open setting dialog
+};
 </script>

@@ -1,5 +1,10 @@
 <template>
-  <div role="button" class="l-button flex shrink-0 items-center flex-gap-2 p-x-4 p-y-0.5 rounded-2 text-4 font-bold b-2 b-solid bg-white select-none" :style="$attrs.style as CSSProperties" :class="[$attrs.class, { 'w-fit': !block }, disabled ? 'cursor-not-allowed!' : 'hover:bg-gray-50 active:bg-gray-100 cursor-pointer']" @click="onClick">
+  <div
+    role="button" class="l-button flex shrink-0 items-center flex-gap-2 rounded-2 text-4 font-bold b-2 b-solid bg-white select-none"
+    :style="$attrs.style as CSSProperties"
+    :class="[$attrs.class, { 'w-fit': !block }, disabled ? 'cursor-not-allowed!' : 'hover:bg-gray-50 active:bg-gray-100 cursor-pointer', (title || $slots.default) ? 'p-x-4 p-y-0.5' : 'p-1.5']"
+    @click="onClick"
+  >
     <slot name="icon"></slot>
     <slot>
       {{ title }}

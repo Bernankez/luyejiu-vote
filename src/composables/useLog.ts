@@ -34,11 +34,16 @@ function _useLog() {
     push({ result: "failure", user, failType, content, lastVote });
   }
 
+  function clear() {
+    logs.value = [];
+  }
+
   return {
     logs,
     push,
     success,
     fail,
+    clear,
   };
 }
 export const useLog = createSharedComposable(_useLog);

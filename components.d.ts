@@ -13,6 +13,7 @@ declare module '@vue/runtime-core' {
     Header: typeof import('./src/components/common/Header.vue')['default']
     LBadgeText: typeof import('./src/components/ui/LBadgeText.vue')['default']
     LButton: typeof import('./src/components/ui/LButton.vue')['default']
+    LogPanel: typeof import('./src/components/common/LogPanel.vue')['default']
     NBadge: typeof import('naive-ui')['NBadge']
     NColorPicker: typeof import('naive-ui')['NColorPicker']
     NInput: typeof import('naive-ui')['NInput']

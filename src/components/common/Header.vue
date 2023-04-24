@@ -12,7 +12,13 @@
         {{ ConnectionStatus[connectionStatus] }}
       </LBadgeText>
     </div>
-    <div>
+    <div class="flex items-center flex-gap-2">
+      <LButton v-if="!showLog" @click="() => showLog = true">
+        显示日志
+      </LButton>
+      <LButton v-else @click="() => showLog = false">
+        隐藏日志
+      </LButton>
       <LButton @click="onSetting">
         <template #icon>
           <div class="i-uil:setting text-6"></div>
@@ -27,6 +33,7 @@
 import { storeToRefs } from "pinia";
 
 const { defaultRoomId } = storeToRefs(useAppStore());
+const { showLog } = storeToRefs(useConfigStore());
 const { connect, close, connectionStatus, roomId } = useDanmu();
 roomId.value = defaultRoomId.value.toString();
 const numberValidate = (value: string) => !value || /^\d+$/.test(value);

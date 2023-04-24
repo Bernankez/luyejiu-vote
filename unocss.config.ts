@@ -1,5 +1,5 @@
 import { defineConfig, presetIcons, presetUno, transformerDirectives } from "unocss";
-import { primary } from "./src/styles/color";
+import { gray, primary } from "./src/styles/color";
 
 export default defineConfig({
   presets: [presetUno(), presetIcons()],
@@ -7,6 +7,7 @@ export default defineConfig({
   theme: {
     colors: {
       primary,
+      gray,
     },
   },
 });

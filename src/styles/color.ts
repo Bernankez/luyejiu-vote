@@ -1,5 +1,18 @@
 export type ColorID = 50 | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900;
 
+export const green: Record<ColorID, string> = {
+  50: "#e8f5e9",
+  100: "#c8e6c9",
+  200: "#a5d6a7",
+  300: "#81c784",
+  400: "#66bb6a",
+  500: "#4caf50",
+  600: "#43a047",
+  700: "#388e3c",
+  800: "#2e7d32",
+  900: "#1b5e20",
+};
+
 export const yellow: Record<ColorID, string> = {
   50: "#fffde7",
   100: "#fff9c4",

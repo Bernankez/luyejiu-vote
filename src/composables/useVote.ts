@@ -38,7 +38,7 @@ export function useVote() {
   watchEffect(() => {
     if (voting.value && connectionStatus.value !== "connected") {
       stop();
-      message.warning("直播间连接状态变化，投票停止");
+      message.warning("直播间连接状态变化，投票中止");
     }
   });
 

@@ -18,6 +18,7 @@
           <div class="i-uil:setting text-6"></div>
         </template>
       </LButton>
+      <SettingDialog v-model:show="showSettingDialog" />
     </div>
   </header>
 </template>
@@ -45,7 +46,8 @@ const badgeStatus = computed(() => {
   }
 });
 
+const showSettingDialog = ref(false);
 const onSetting = () => {
-  // TODO open setting dialog
+  showSettingDialog.value = true;
 };
 </script>

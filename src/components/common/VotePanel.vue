@@ -142,14 +142,14 @@ const { start: startVoteUp, stop: stopVoteUp } = useContinuous(voteUp);
 const { start: startVoteDown, stop: stopVoteDown } = useContinuous(voteDown);
 const onVoteUpLongPress = (_: any, pressing: boolean) => {
   if (pressing) {
-    startVoteUp({ delay: 60 });
+    startVoteUp({ delay: 30 });
   } else {
     stopVoteUp();
   }
 };
 const onVoteDownLongPress = (_: any, pressing: boolean) => {
   if (pressing) {
-    startVoteDown({ delay: 60 });
+    startVoteDown({ delay: 30 });
   } else {
     stopVoteDown();
   }

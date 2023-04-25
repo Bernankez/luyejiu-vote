@@ -6,6 +6,7 @@
     :class="[$attrs.class, { 'w-fit': !block }, disabled ? 'cursor-not-allowed!' : 'hover:bg-gray-50 active:bg-gray-100 cursor-pointer', (title || $slots.default) ? 'p-x-4 p-y-0.5' : 'p-1.5']"
     @click="onClick"
     @mouseup="onMouseUp"
+    @mouseleave="onMouseLeave"
   >
     <slot name="icon"></slot>
     <slot>
@@ -54,6 +55,14 @@ const onClick = (e: MouseEvent) => {
       longpressing.value = false;
       emit("longpress", e, false);
     }
+  }
+};
+
+const onMouseLeave = (e: MouseEvent) => {
+  // 防止鼠标长按过程中移出元素导致无法接受click事件，进而无法结束longpress
+  if (longpressing.value) {
+    longpressing.value = false;
+    emit("longpress", e, false);
   }
 };
 

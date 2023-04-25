@@ -1,7 +1,7 @@
 <template>
-  <div class="w-full min-h-full flex justify-center items-center">
+  <div class="min-h-full flex justify-center items-center">
     <div class="flex flex-gap-3">
-      <VotePanel />
+      <VotePanel class="shrink-0" />
       <Transition name="fade">
         <LogPanel v-if="showLog" />
       </Transition>

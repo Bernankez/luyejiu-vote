@@ -13,7 +13,7 @@ import Home from "@/pages/Home.vue";
 
 <style scoped>
 main {
-  @apply w-full min-h-full grid p-5 box-border;
+  @apply w-full min-h-full grid p-5 box-border overflow-auto;
 
   padding-top: calc(4.5rem + 1.25rem);
 }

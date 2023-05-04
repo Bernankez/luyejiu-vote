@@ -1,7 +1,6 @@
 <template>
   <div class="shrink-0 flex items-center flex-gap-2">
-    <NBadge dot :color="color" />
-    <span class="text-4 cursor-default select-none">
+    <span :style="{ backgroundColor: color }" class="text-4 text-white font-bold rounded-1 p-x-1 box-border cursor-default select-none">
       <slot>{{ title }}</slot>
     </span>
   </div>

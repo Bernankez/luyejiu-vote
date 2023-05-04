@@ -36,7 +36,7 @@ export function useVote() {
   const message = useMessage();
 
   watchEffect(() => {
-    if (voting.value && connectionStatus.value !== "connected") {
+    if (voting.value && connectionStatus.value === "disconnected") {
       // stop();
       message.warning("直播间断开啦");
     }

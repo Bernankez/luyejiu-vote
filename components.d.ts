@@ -11,6 +11,7 @@ declare module 'vue' {
     LBadgeText: typeof import('./src/components/ui/LBadgeText.vue')['default']
     LButton: typeof import('./src/components/ui/LButton.vue')['default']
     LCard: typeof import('./src/components/ui/LCard.vue')['default']
+    LKeyboard: typeof import('./src/components/ui/LKeyboard.vue')['default']
     LogPanel: typeof import('./src/components/common/LogPanel.vue')['default']
     LTooltip: typeof import('./src/components/ui/LTooltip.vue')['default']
     NInput: typeof import('naive-ui')['NInput']

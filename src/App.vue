@@ -1,20 +1,9 @@
 <template>
   <ConfigProvider>
-    <Header class="z-609" />
-    <main>
-      <Home />
-    </main>
+    <Layout />
   </ConfigProvider>
 </template>
 
 <script setup lang="ts">
-import Home from "@/pages/Home.vue";
+import Layout from "./layout/index.vue";
 </script>
-
-<style scoped>
-main {
-  @apply w-full min-h-full grid p-5 box-border overflow-auto;
-
-  padding-top: calc(4.5rem + 1.25rem);
-}
-</style>

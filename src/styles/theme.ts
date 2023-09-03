@@ -3,8 +3,8 @@ import { primary } from "./color";
 
 export const themeOverrides: GlobalThemeOverrides = {
   common: {
-    primaryColor: primary[500],
-    primaryColorHover: primary[400],
-    primaryColorPressed: primary[600],
+    primaryColor: primary[600],
+    primaryColorHover: primary[500],
+    primaryColorPressed: primary[700],
   },
 };

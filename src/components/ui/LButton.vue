@@ -1,7 +1,7 @@
 <template>
   <div
     ref="buttonRef"
-    role="button" class="l-button flex shrink-0 items-center flex-gap-2 rounded-2 text-4 font-bold b-2 b-solid bg-white select-none"
+    role="button" class="l-button flex shrink-0 select-none items-center flex-gap-2 b-2 rounded-2 b-solid bg-white text-4 font-bold"
     :style="$attrs.style as CSSProperties"
     :class="[$attrs.class, { 'w-fit': !block }, disabled ? 'cursor-not-allowed!' : 'hover:bg-gray-50 active:bg-gray-100 cursor-pointer', (title || $slots.default) ? 'p-x-4 p-y-0.5' : 'p-1.5']"
     @click="onClick"
@@ -27,6 +27,7 @@ const props = withDefaults(defineProps<{
   disabledColor?: string;
   /** longpress事件时不触发click */
   omitClickOnLongPress?: boolean;
+  defaultLongpressDelay?: number;
 }>(), {
   title: "",
   disabled: false,
@@ -34,12 +35,13 @@ const props = withDefaults(defineProps<{
   color: primary[500],
   disabledColor: gray[400],
   omitClickOnLongPress: true,
+  defaultLongpressDelay: 500,
 });
 
 const emit = defineEmits<{
-  (event: "click", e: MouseEvent): void;
-  (event: "longpress", e: PointerEvent | MouseEvent, pressing: boolean): void;
-  (event: "mouseup", e: MouseEvent): void;
+  "click": [e: MouseEvent];
+  "longpress": [e: PointerEvent | MouseEvent, pressing: boolean];
+  "mouseup": [e :MouseEvent];
 }>();
 
 const color = computed(() => props.disabled ? props.disabledColor : props.color);
@@ -68,7 +70,7 @@ const onMouseLeave = (e: MouseEvent) => {
 
 const longpressing = ref(false);
 const buttonRef = ref<HTMLDivElement>();
-onLongPress(buttonRef, onLongPressed, { delay: 500 });
+onLongPress(buttonRef, onLongPressed, { delay: props.defaultLongpressDelay });
 function onLongPressed(e: PointerEvent) {
   if (!props.disabled) {
     longpressing.value = true;

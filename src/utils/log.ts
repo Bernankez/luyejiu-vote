@@ -12,6 +12,7 @@ const _log = (str = "") => {
   console.log(`· ${str}`);
 };
 
+// TODO function原型污染
 const __proto__ = Object.getPrototypeOf(_log);
 __proto__.success = (str = "") => {
   console.log(chalk.green(`✔️ ${str}`));

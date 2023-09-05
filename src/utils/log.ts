@@ -1,32 +1,20 @@
 import chalk from "chalk";
 
-interface Log {
-  (str: string): void;
-  success(str: string): void;
-  error(str: string): void;
-  warn(str: string): void;
-  info(str: string): void;
+function log(str = "") {
+  console.log(`· ${str}`);
 }
 
-const _log = (str = "") => {
-  console.log(`· ${str}`);
-};
-
-// TODO function原型污染
-const __proto__ = Object.getPrototypeOf(_log);
-__proto__.success = (str = "") => {
+log.success = (str = "") => {
   console.log(chalk.green(`✔️ ${str}`));
 };
-__proto__.error = (str = "") => {
+log.error = (str = "") => {
   console.log(chalk.red(`✘ ${str}`));
 };
-__proto__.warn = (str = "") => {
+log.warn = (str = "") => {
   console.log(chalk.yellow(`⚠️ ${str}`));
 };
-__proto__.info = (str = "") => {
+log.info = (str = "") => {
   console.log(chalk.blue(`⊙ ${str}`));
 };
-
-const log = _log as Log;
 
 export { log };

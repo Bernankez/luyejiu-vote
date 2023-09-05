@@ -11,6 +11,7 @@ declare module 'vue' {
     LBadgeText: typeof import('./src/components/ui/LBadgeText.vue')['default']
     LButton: typeof import('./src/components/ui/LButton.vue')['default']
     LCard: typeof import('./src/components/ui/LCard.vue')['default']
+    LCD: typeof import('./src/components/common/VotePanel/LCD.vue')['default']
     LKeyboard: typeof import('./src/components/ui/LKeyboard.vue')['default']
     LogPanel: typeof import('./src/components/common/LogPanel.vue')['default']
     LTooltip: typeof import('./src/components/ui/LTooltip.vue')['default']
@@ -18,6 +19,8 @@ declare module 'vue' {
     NTooltip: typeof import('naive-ui')['NTooltip']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
-    VotePanel: typeof import('./src/components/common/VotePanel.vue')['default']
+    ScreenItem: typeof import('./src/components/common/VotingMachine/ScreenItem.vue')['default']
+    VotePanel: typeof import('./src/components/common/VotePanel/VotePanel.vue')['default']
+    VotingMachine: typeof import('./src/components/common/VotingMachine/VotingMachine.vue')['default']
   }
 }

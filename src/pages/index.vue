@@ -1,6 +1,9 @@
 <template>
-  <VotePanel />
-  <LogPanel />
+  <div class="">
+    <VotePanel />
+    <VotingMachine />
+    <!-- <LogPanel /> -->
+  </div>
 </template>
 
 <script setup lang="ts">

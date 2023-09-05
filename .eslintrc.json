@@ -1,3 +1,4 @@
 {
-  "extends": ["@bernankez", "@bernankez/unocss"]
+  "extends": ["@bernankez", "@bernankez/unocss"],
+  "ignorePatterns": ["*.ttf", "*.woff2"]
 }

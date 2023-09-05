@@ -1,6 +1,6 @@
 <template>
   <LCard>
-    <LCD class="flex flex-gap-5 text-10">
+    <VT2LCD class="flex flex-gap-5 text-10">
       <div class="flex flex-1 flex-col items-center justify-center">
         <div class="i-fluent-emoji-high-contrast:smiling-face-with-halo"></div>
         <div class="relative">
@@ -19,7 +19,7 @@
           </div>
         </div>
       </div>
-    </LCD>
+    </VT2LCD>
     <div class="m-t-3 w-full flex justify-evenly">
       <LKeyboard theme="light">
         <div class="i-ion:caret-up text-7">

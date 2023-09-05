@@ -1,7 +1,7 @@
 <template>
-  <div class="">
-    <VotePanel />
-    <VotingMachine />
+  <div class="m-5 flex flex-col flex-gap-5">
+    <VotingPanel />
+    <VotingType2 />
     <!-- <LogPanel /> -->
   </div>
 </template>

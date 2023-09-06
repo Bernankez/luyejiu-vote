@@ -5,10 +5,22 @@
 </template>
 
 <script setup lang="ts">
-withDefaults(defineProps<{
+const props = withDefaults(defineProps<{
   theme?: "dark" | "light";
+  shadowColor?: string;
 }>(), {
   theme: "dark",
+});
+
+const defaultShadowColor = {
+  dark: "rgb(125 136 134 / 79%)",
+  light: "#aaa",
+};
+const shadowColor = computed(() => {
+  if (props.shadowColor) {
+    return props.shadowColor;
+  }
+  return defaultShadowColor[props.theme];
 });
 </script>
 
@@ -29,7 +41,7 @@ withDefaults(defineProps<{
   box-shadow:
     inset -1px 2px 4px #4a4a4a,
     -1px -1px 2px #000,
-    -3px 6px 7px rgb(125 136 134 / 79%);
+    -3px 6px 7px v-bind(shadowColor);
 }
 
 .btn--light {
@@ -38,7 +50,7 @@ withDefaults(defineProps<{
   box-shadow:
     inset -1px 2px 4px #fff,
     -1px -1px 2px #fff,
-    -3px 6px 7px #aaa;
+    -3px 6px 7px v-bind(shadowColor);
 }
 
 .btn--dark:active {

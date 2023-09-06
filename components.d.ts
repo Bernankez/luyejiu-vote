@@ -23,6 +23,7 @@ declare module 'vue' {
     VotingType2: typeof import('./src/components/common/voting-panel/voting-type-2/VotingType2.vue')['default']
     VT2Button: typeof import('./src/components/common/voting-panel/voting-type-2/VT2Button.vue')['default']
     VT2LCD: typeof import('./src/components/common/voting-panel/voting-type-2/VT2LCD.vue')['default']
+    VT2LED: typeof import('./src/components/common/voting-panel/voting-type-2/VT2LED.vue')['default']
     VT2ScreenItem: typeof import('./src/components/common/voting-panel/voting-type-2/VT2ScreenItem.vue')['default']
   }
 }

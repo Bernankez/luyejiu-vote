@@ -19,8 +19,6 @@
   color: #181921;
   font-family: "DSEG7 Classic Mini", "Kenney Pixel", monospace;
   background-color: #d3ffb8;
-
-  /* TODO x=0 */
   box-shadow: inset -2px 5px 10px #2a421a;
   opacity: 0.6;
 }
@@ -32,10 +30,7 @@
   display: block;
   width: 100%;
   height: 100%;
-
-  /* TODO background */
-
-  /* background: linear-gradient(40deg, #fff0 15%, #fff2 30%, #fff6 50%, #fff2 70%, #fff0 85%); */
+  background: linear-gradient(40deg, #fff0 15%, #fff2 30%, #fff6 50%, #fff2 70%, #fff0 85%);
   content: "";
 }
 </style>

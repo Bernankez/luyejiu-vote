@@ -14,6 +14,11 @@
   src: url("./assets/fonts/Kenney-Pixel.woff2");
 }
 
+@font-face {
+  font-family: "AWAVE Regular";
+  src: url("./assets/fonts/AWAVE-Regular.woff2");
+}
+
 :root {
   width: 100%;
   height: 100%;

@@ -33,14 +33,14 @@ const shadow = computed(() => props.light ? `0 0 3em ${color.value}` : "");
 
 <style scoped>
 .led {
-  border: 1px solid #333;
+  border: 1px solid #888;
   border-radius: 9999px;
   box-shadow: v-bind(shadow);
 }
 
 .led-light {
   width: 1rem;
-  height: 1rem;
+  height: 0.6rem;
   border-radius: 9999px;
   background-color: v-bind(color);
   box-shadow:

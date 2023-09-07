@@ -1,5 +1,5 @@
 <template>
-  <div class="machine box-border rounded-4 p-10 p-t-0">
+  <div class="machine relative box-border rounded-4 p-10 p-t-0">
     <div class="m-b-3 m-t-4 flex justify-center text-yellow-800">
       <VT2LED state="on" light :color-map="{ on: 'rgb(22, 163, 74)', off: 'rgb(229, 57, 53)', warn: 'rgb(249, 168, 37)' }" />
     </div>
@@ -41,10 +41,12 @@
       </div>
       <div class="flex flex-1 justify-center"></div>
     </div>
+    <img :src="Sticker" class="absolute bottom-0 right-0 w-10 object-scale-down" />
   </div>
 </template>
 
 <script setup lang="ts">
+import Sticker from "@/assets/images/sticker.png";
 </script>
 
 <style scoped>

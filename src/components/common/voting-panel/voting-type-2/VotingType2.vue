@@ -44,7 +44,7 @@
       </div>
       <div class="flex flex-1 justify-center"></div>
     </div>
-    <img :src="Sticker" class="absolute bottom-0 right-0 w-50 translate-x-7 translate-y-7 object-scale-down -rotate-30" />
+    <img :src="Sticker" loading="lazy" class="absolute bottom-0 right-0 w-50 translate-x-7 translate-y-7 object-scale-down -rotate-30" />
   </div>
 </template>
 
